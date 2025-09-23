@@ -2,8 +2,8 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --primary: #ffffff;
+  --foreground: #0a0a0a;
+  --primary: #0a0a0a;
   --secondary: #a1a1a1;
   --border: #262626;
 }
@@ -21,6 +21,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #fafafa;
+    --primary: #ffffff;
   }
 }
 
