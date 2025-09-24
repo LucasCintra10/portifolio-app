@@ -16,7 +16,19 @@ const translations = {
     currently: "Currently",
     jobTitle: "Freelance Frontend Engineer",
     jobPeriod: "July 2025 — Present",
-    skills: "Skills"
+    skills: "Skills",
+    experience: "Experience",
+    experiencePeriod: "2023 - 2025",
+    oticketPeriod: "July 2023 - July 2025",
+    fullStackDeveloper: "Full-Stack Developer",
+    oticketCompany: "Oticket",
+    oticketDescription: "Developed and maintained web applications using React, Next.js, Node.js and GO. Collaborated with cross-functional teams to design and implement new features, ensuring optimal performance and user experience.",
+    unifacefPeriod: "February 2025 - June 2025",
+    itIntern: "IT Intern",
+    unifacefCompany: "UniFACEF",
+    unifacefDescription: "Provided technical support and troubleshooting for hardware and software issues. Assisted in the maintenance of IT infrastructure, including network management and system updates.",
+    technicalSupport: "Technical Support",
+    systemMaintenance: "System Maintenance"
   },
   pt: {
     about: "Sobre",
@@ -32,7 +44,19 @@ const translations = {
     currently: "Atualmente",
     jobTitle: "Engenheiro Frontend Freelance",
     jobPeriod: "Julho 2025 — Presente",
-    skills: "Habilidades"
+    skills: "Habilidades",
+    experience: "Experiência",
+    experiencePeriod: "2023 - 2025",
+    oticketPeriod: "Julho 2023 - Julho 2025",
+    fullStackDeveloper: "Desenvolvedor Full-Stack",
+    oticketCompany: "Oticket",
+    oticketDescription: "Desenvolvi e mantive aplicações web usando React, Next.js, Node.js e GO. Colaborei com equipes multifuncionais para projetar e implementar novas funcionalidades, garantindo performance otimizada e experiência do usuário.",
+    unifacefPeriod: "Fevereiro 2025 - Junho 2025",
+    itIntern: "Estagiário de TI",
+    unifacefCompany: "UniFACEF",
+    unifacefDescription: "Forneci suporte técnico e resolução de problemas para questões de hardware e software. Auxiliei na manutenção da infraestrutura de TI, incluindo gerenciamento de rede e atualizações de sistema.",
+    technicalSupport: "Suporte Técnico",
+    systemMaintenance: "Manutenção de Sistemas"
   }
 };
 

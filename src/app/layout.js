@@ -10,8 +10,8 @@ const geist = Geist({
 });
 
 export const metadata = {
-  title: "Lucas Cintra",
-  description: "Portfolio Page of Lucas Cintra",
+  title: "Portfolio | Lucas Cintra",
+  description: "Portfolio page of Lucas Cintra frontend engineer",
 };
 
 export default function RootLayout({ children }) {

@@ -18,6 +18,8 @@ const skills = [
   "SSR / SSG / SPA",
   "GO",
   "PostgreSQL",
+  "Jest",
+  "Cypress",
 ];
 
 const containerVariants = {
@@ -48,7 +50,7 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="min-h-screen flex justify-center">
+    <div className="min-h-screen flex justify-center flex-col items-center relative bg-background text-text transition-colors duration-500">
       <div className="absolute right-4 top-6 mb-4 flex space-x-4">
         <button
           onClick={toggleTheme}
@@ -68,7 +70,7 @@ export default function Home() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="w-[90%] md:w-[38%] mt-8 flex flex-col space-y-4 items-center md:justify-center"
+        className="w-[90%] md:w-[38%] h-screen flex flex-col space-y-4 items-center justify-center"
       >
         <div>
           <motion.div variants={itemVariants} className="flex flex-col space-y-1">
@@ -99,7 +101,7 @@ export default function Home() {
             <h3 className="text-secondary text-xs">{t("jobPeriod")}</h3>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mt-12 flex flex-col space-y-1">
+          <motion.div variants={itemVariants} className="mt-12 flex flex-col ">
             <span className="text-secondary text-sm font-mono uppercase mb-4">{t("skills")}</span>
             <div>
               {skills.map((skill) => (
@@ -114,6 +116,51 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.header>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-[90%] md:w-[38%] h-screen mt-8 flex flex-col items-center md:justify-center"
+      >
+        <motion.div variants={itemVariants} className="w-full flex space-y-1 flex-col justify-between items-baseline">
+          <h2 className="text-primary text-3xl">{t("experience")}</h2>
+          <span className="text-secondary text-sm font-mono uppercase">{t("experiencePeriod")}</span>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 mt-12">
+          <h3 className="text-secondary text-xl">{t("oticketPeriod")}</h3>
+          <div className="flex flex-col">
+            <span className="text-primary text-lg">{t("fullStackDeveloper")}</span>
+            <span className="text-secondary">{t("oticketCompany")}</span>
+          </div>
+          <span className="text-secondary">
+            {t("oticketDescription")}
+          </span>
+          <div className="text-xs flex flex-wrap gap-6">
+            <span className="pr-2">React </span>
+            <span>Next.js </span>
+            <span>Node.js </span>
+            <span>GO</span>
+          </div>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 mt-12">
+          <h3 className="text-secondary text-xl">{t("unifacefPeriod")}</h3>
+          <div className="flex flex-col">
+            <span className="text-primary">{t("itIntern")}</span>
+            <span className="text-secondary">{t("unifacefCompany")}</span>
+          </div>
+          <span className="text-secondary">
+            {t("unifacefDescription")}
+          </span>
+          <div className="text-xs flex flex-wrap gap-6">
+            <span className="pr-2">{t("technicalSupport")}</span>
+            <span>{t("systemMaintenance")}</span>
+          </div>
+        </motion.div>
+
+      </motion.div>
     </div>
   );
 }
