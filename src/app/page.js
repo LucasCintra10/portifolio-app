@@ -51,7 +51,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex justify-center flex-col items-center relative bg-background text-text transition-colors duration-500">
-      <div className="absolute right-4 top-6 mb-4 flex space-x-4">
+
+      <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none"></div>
+      <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none"></div>
+
+      <div className="absolute right-4 top-12 mb-4 flex space-x-4">
         <button
           onClick={toggleTheme}
           className="w-10 h-10 text-xs font-mono border border-border rounded-xl hover:border-primary transition-all duration-300 flex items-center  justify-center cursor-pointer"
@@ -128,15 +132,13 @@ export default function Home() {
           <span className="text-secondary text-sm font-mono uppercase">{t("experiencePeriod")}</span>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 mt-12">
+        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 mt-12 border-b border-border pb-8">
           <h3 className="text-secondary text-xl">{t("oticketPeriod")}</h3>
           <div className="flex flex-col">
             <span className="text-primary text-lg">{t("fullStackDeveloper")}</span>
             <span className="text-secondary">{t("oticketCompany")}</span>
           </div>
-          <span className="text-secondary">
-            {t("oticketDescription")}
-          </span>
+          <span className="text-secondary">{t("oticketDescription")}</span>
           <div className="text-xs flex flex-wrap gap-6">
             <span className="pr-2">React </span>
             <span>Next.js </span>
@@ -145,21 +147,18 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 mt-12">
+        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 mt-12 border-b border-border pb-8">
           <h3 className="text-secondary text-xl">{t("unifacefPeriod")}</h3>
           <div className="flex flex-col">
             <span className="text-primary">{t("itIntern")}</span>
             <span className="text-secondary">{t("unifacefCompany")}</span>
           </div>
-          <span className="text-secondary">
-            {t("unifacefDescription")}
-          </span>
+          <span className="text-secondary">{t("unifacefDescription")}</span>
           <div className="text-xs flex flex-wrap gap-6">
             <span className="pr-2">{t("technicalSupport")}</span>
             <span>{t("systemMaintenance")}</span>
           </div>
         </motion.div>
-
       </motion.div>
     </div>
   );
