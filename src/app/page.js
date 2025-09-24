@@ -51,9 +51,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex justify-center flex-col items-center relative bg-background text-text transition-colors duration-500">
-
-      <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none"></div>
-      <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none"></div>
+      <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
+      <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
 
       <div className="absolute right-4 top-12 mb-4 flex space-x-4">
         <button
