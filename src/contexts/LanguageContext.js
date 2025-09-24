@@ -30,7 +30,7 @@ const translations = {
     available: "Disponível para trabalho",
     location: "Franca, São Paulo, Brasil",
     currently: "Atualmente",
-    jobTitle: "Engenheiro Frontend Freelancer",
+    jobTitle: "Engenheiro Frontend Freelance",
     jobPeriod: "Julho 2025 — Presente",
     skills: "Habilidades"
   }
