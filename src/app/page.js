@@ -3,6 +3,7 @@ import { MapPinIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 
 const skills = [
   "React",
@@ -48,11 +49,63 @@ const itemVariants = {
 export default function Home() {
   const { language, toggleLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState("about");
+
+  const aboutRef = useRef(null);
+  const experienceRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === aboutRef.current) {
+              setActiveSection("about");
+            } else if (entry.target === experienceRef.current) {
+              setActiveSection("experience");
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: "-20% 0px -20% 0px",
+      }
+    );
+
+    if (aboutRef.current) observer.observe(aboutRef.current);
+    if (experienceRef.current) observer.observe(experienceRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen flex justify-center flex-col items-center relative bg-background text-text transition-colors duration-500">
       <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
       <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
+
+      <div className="hidden md:fixed left-8 top-1/2 transform -translate-y-1/2 z-20 md:flex flex-col space-y-4">
+        <button
+          onClick={() => scrollToSection(aboutRef)}
+          className={`w-3 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
+            activeSection === "about" ? "bg-primary" : "bg-secondary hover:opacity-80"
+          }`}
+          aria-label="Go to About section"
+        />
+        <button
+          onClick={() => scrollToSection(experienceRef)}
+          className={`w-3 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
+            activeSection === "experience" ? "bg-primary" : "bg-secondary hover:opacity-80"
+          }`}
+          aria-label="Go to Experience section"
+        />
+      </div>
 
       <div className="absolute right-4 top-12 mb-4 flex space-x-4">
         <button
@@ -70,6 +123,7 @@ export default function Home() {
         </button>
       </div>
       <motion.header
+        ref={aboutRef}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -121,6 +175,7 @@ export default function Home() {
       </motion.header>
 
       <motion.div
+        ref={experienceRef}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
