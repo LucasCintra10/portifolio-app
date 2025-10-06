@@ -1,5 +1,5 @@
 "use client";
-import { MapPinIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import { MapPinIcon, SunIcon, MoonIcon, ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion } from "framer-motion";
@@ -233,41 +233,40 @@ export default function Home() {
         animate="visible"
         className="w-[90%] md:w-[38%] h-[90vh] mt-8 flex flex-col items-center justify-center"
       >
-          <motion.div
-            variants={itemVariants}
-            className="w-full flex flex-col gap-4 justify-between items-baseline"
-          >
-            <h2 className="text-primary text-3xl">Contact</h2>
-            <span className="text-secondary">
-              Always interested in new opportunities, collaborations, and conversations about technology and design.
-              Feel free to reach out!
-            </span>
-            <span className="">lucasrcintra10@hotmail.com</span>
-          </motion.div>
-          <motion.div variants={itemVariants} className="w-full flex flex-col mt-12 ">
-            <h3 className="text-secondary text-sm font-mono uppercase mb-4">Socials</h3>
-            <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/in/lucasrcintra/" target="_blank" rel="noopener noreferrer">
-                <div className="w-38 h-24 p-4 border border-border flex flex-col justify-center rounded-xl text-primary hover:border-primary transition-all duration-300 cursor-pointer">
-                  <span>LinkedIn</span>
-                  <span className="text-secondary">lucasrcintra</span>
-                </div>
-              </a>
-              <a href="https://github.com/LucasCintra10" target="_blank" rel="noopener noreferrer">
-                <div className="w-38 h-24 p-4 border border-border flex flex-col justify-center rounded-xl text-primary hover:border-primary transition-all duration-300 cursor-pointer">
-                  <span>GitHub</span>
-                  <span className="text-secondary">@LucasCintra10</span>
-                </div>
-              </a>
-            </div>
-          </motion.div>
+        <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 justify-between items-baseline">
+          <h2 className="text-primary text-3xl">{t("contact")}</h2>
+          <span className="text-secondary">
+            {t("contactDescription")}
+          </span>
+          <a href="mailto:lucasrcintra10@hotmail.com" className="hover:text-secondary transition-all duration-300 text-primary group">
+            lucasrcintra10@hotmail.com
+            <ArrowLongRightIcon className="h-6 w-6 inline-block ml-1 group-hover:translate-x-1 transition-all duration-300" />
+          </a>
+        </motion.div>
+        <motion.div variants={itemVariants} className="w-full flex flex-col mt-12 ">
+          <h3 className="text-secondary text-sm font-mono uppercase mb-4">{t("socials")}</h3>
+          <div className="flex space-x-4">
+            <a href="https://www.linkedin.com/in/lucasrcintra/" target="_blank" rel="noopener noreferrer">
+              <div className="w-38 h-24 p-4 border border-border flex flex-col justify-center rounded-xl text-primary hover:border-primary transition-all duration-300 cursor-pointer">
+                <span>LinkedIn</span>
+                <span className="text-secondary">lucasrcintra</span>
+              </div>
+            </a>
+            <a href="https://github.com/LucasCintra10" target="_blank" rel="noopener noreferrer">
+              <div className="w-38 h-24 p-4 border border-border flex flex-col justify-center rounded-xl text-primary hover:border-primary transition-all duration-300 cursor-pointer">
+                <span>GitHub</span>
+                <span className="text-secondary">@LucasCintra10</span>
+              </div>
+            </a>
+          </div>
+        </motion.div>
       </motion.section>
 
       <motion.footer
         variants={itemVariants}
         className="w-[90%] md:w-[38%] flex flex-col border-t border-border pt-4 pb-4 items-center"
       >
-        <span className="text-secondary text-sm">© 2025 Lucas Cintra. All rights reserved.</span>
+        <span className="text-secondary text-sm">{t("footerDescription")}</span>
       </motion.footer>
       <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
     </div>

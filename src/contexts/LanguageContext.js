@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 const translations = {
   en: {
@@ -22,13 +22,20 @@ const translations = {
     oticketPeriod: "July 2023 - July 2025",
     fullStackDeveloper: "Full-Stack Developer",
     oticketCompany: "Oticket",
-    oticketDescription: "Developed and maintained web applications using React, Next.js, Node.js and GO. Collaborated with cross-functional teams to design and implement new features, ensuring optimal performance and user experience.",
+    oticketDescription:
+      "Developed and maintained web applications using React, Next.js, Node.js and GO. Collaborated with cross-functional teams to design and implement new features, ensuring optimal performance and user experience.",
     unifacefPeriod: "February 2023 - June 2023",
     itIntern: "IT Intern",
     unifacefCompany: "UniFACEF",
-    unifacefDescription: "Provided technical support and troubleshooting for hardware and software issues. Assisted in the maintenance of IT infrastructure, including network management and system updates.",
+    unifacefDescription:
+      "Provided technical support and troubleshooting for hardware and software issues. Assisted in the maintenance of IT infrastructure, including network management and system updates.",
     technicalSupport: "Technical Support",
-    systemMaintenance: "System Maintenance"
+    systemMaintenance: "System Maintenance",
+    contact: "Contact",
+    contactDescription:
+      "Always interested in new opportunities, collaborations, and conversations about technology and design. Feel free to reach out!",
+    socials: "Socials",
+    footerDescription: "© 2025 Lucas Cintra. All rights reserved.",
   },
   pt: {
     about: "Sobre",
@@ -50,38 +57,41 @@ const translations = {
     oticketPeriod: "Julho 2023 - Julho 2025",
     fullStackDeveloper: "Desenvolvedor Full-Stack",
     oticketCompany: "Oticket",
-    oticketDescription: "Desenvolvi e mantive aplicações web usando React, Next.js, Node.js e GO. Colaborei com equipes multifuncionais para projetar e implementar novas funcionalidades, garantindo performance otimizada e experiência do usuário.",
+    oticketDescription:
+      "Desenvolvi e mantive aplicações web usando React, Next.js, Node.js e GO. Colaborei com equipes multifuncionais para projetar e implementar novas funcionalidades, garantindo performance otimizada e experiência do usuário.",
     unifacefPeriod: "Fevereiro 2023 - Junho 2023",
     itIntern: "Estagiário de TI",
     unifacefCompany: "UniFACEF",
-    unifacefDescription: "Forneci suporte técnico e resolução de problemas para questões de hardware e software. Auxiliei na manutenção da infraestrutura de TI, incluindo gerenciamento de rede e atualizações de sistema.",
+    unifacefDescription:
+      "Forneci suporte técnico e resolução de problemas para questões de hardware e software. Auxiliei na manutenção da infraestrutura de TI, incluindo gerenciamento de rede e atualizações de sistema.",
     technicalSupport: "Suporte Técnico",
-    systemMaintenance: "Manutenção de Sistemas"
-  }
+    systemMaintenance: "Manutenção de Sistemas",
+    contact: "Contato",
+    contactDescription:
+      "Sempre interessado em novas oportunidades, colaborações e conversas sobre tecnologia e design. Sinta-se à vontade para entrar em contato!",
+    socials: "Redes Sociais",
+    footerDescription: "© 2025 Lucas Cintra. Todos os direitos reservados.",
+  },
 };
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState("en");
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'pt' : 'en');
+    setLanguage((prev) => (prev === "en" ? "pt" : "en"));
   };
 
   const t = (key) => translations[language][key] || key;
 
-  return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ language, toggleLanguage, t }}>{children}</LanguageContext.Provider>;
 };
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };
