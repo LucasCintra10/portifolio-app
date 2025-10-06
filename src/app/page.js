@@ -53,6 +53,7 @@ export default function Home() {
 
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
+  const contactRef = useRef(null);
 
   const scrollToSection = (ref) => {
     if (ref.current) {
@@ -69,6 +70,8 @@ export default function Home() {
               setActiveSection("about");
             } else if (entry.target === experienceRef.current) {
               setActiveSection("experience");
+            } else if (entry.target === contactRef.current) {
+              setActiveSection("contact");
             }
           }
         });
@@ -81,6 +84,7 @@ export default function Home() {
 
     if (aboutRef.current) observer.observe(aboutRef.current);
     if (experienceRef.current) observer.observe(experienceRef.current);
+    if (contactRef.current) observer.observe(contactRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -88,24 +92,30 @@ export default function Home() {
   return (
     <div className="min-h-screen flex justify-center flex-col items-center relative bg-background text-text transition-colors duration-500">
       <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
-      <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
 
-      <div className="hidden md:fixed left-8 top-1/2 transform -translate-y-1/2 z-20 md:flex flex-col space-y-4">
+      <nav className="hidden md:fixed left-8 top-1/2 transform -translate-y-1/2 z-20 md:flex flex-col space-y-4">
         <button
           onClick={() => scrollToSection(aboutRef)}
-          className={`w-3 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
+          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
             activeSection === "about" ? "bg-primary" : "bg-secondary hover:opacity-80"
           }`}
           aria-label="Go to About section"
         />
         <button
           onClick={() => scrollToSection(experienceRef)}
-          className={`w-3 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
+          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
             activeSection === "experience" ? "bg-primary" : "bg-secondary hover:opacity-80"
           }`}
           aria-label="Go to Experience section"
         />
-      </div>
+        <button
+          onClick={() => scrollToSection(contactRef)}
+          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
+            activeSection === "contact" ? "bg-primary" : "bg-secondary hover:opacity-80"
+          }`}
+          aria-label="Go to Contact section"
+        />
+      </nav>
 
       <div className="absolute right-4 top-12 mb-4 flex space-x-4">
         <button
@@ -122,7 +132,8 @@ export default function Home() {
           {language === "en" ? "PT" : "EN"}
         </button>
       </div>
-      <motion.header
+
+      <motion.section
         ref={aboutRef}
         variants={containerVariants}
         initial="hidden"
@@ -172,9 +183,9 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </motion.header>
+      </motion.section>
 
-      <motion.div
+      <motion.section
         ref={experienceRef}
         variants={containerVariants}
         initial="hidden"
@@ -213,7 +224,52 @@ export default function Home() {
             <span>{t("systemMaintenance")}</span>
           </div>
         </motion.div>
-      </motion.div>
+      </motion.section>
+
+      <motion.section
+        ref={contactRef}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-[90%] md:w-[38%] h-[90vh] mt-8 flex flex-col items-center justify-center"
+      >
+          <motion.div
+            variants={itemVariants}
+            className="w-full flex flex-col gap-4 justify-between items-baseline"
+          >
+            <h2 className="text-primary text-3xl">Contact</h2>
+            <span className="text-secondary">
+              Always interested in new opportunities, collaborations, and conversations about technology and design.
+              Feel free to reach out!
+            </span>
+            <span className="">lucasrcintra10@hotmail.com</span>
+          </motion.div>
+          <motion.div variants={itemVariants} className="w-full flex flex-col mt-12 ">
+            <h3 className="text-secondary text-sm font-mono uppercase mb-4">Socials</h3>
+            <div className="flex space-x-4">
+              <a href="https://www.linkedin.com/in/lucasrcintra/" target="_blank" rel="noopener noreferrer">
+                <div className="w-38 h-24 p-4 border border-border flex flex-col justify-center rounded-xl text-primary hover:border-primary transition-all duration-300 cursor-pointer">
+                  <span>LinkedIn</span>
+                  <span className="text-secondary">lucasrcintra</span>
+                </div>
+              </a>
+              <a href="https://github.com/LucasCintra10" target="_blank" rel="noopener noreferrer">
+                <div className="w-38 h-24 p-4 border border-border flex flex-col justify-center rounded-xl text-primary hover:border-primary transition-all duration-300 cursor-pointer">
+                  <span>GitHub</span>
+                  <span className="text-secondary">@LucasCintra10</span>
+                </div>
+              </a>
+            </div>
+          </motion.div>
+      </motion.section>
+
+      <motion.footer
+        variants={itemVariants}
+        className="w-[90%] md:w-[38%] flex flex-col border-t border-border pt-4 pb-4 items-center"
+      >
+        <span className="text-secondary text-sm">© 2025 Lucas Cintra. All rights reserved.</span>
+      </motion.footer>
+      <div className="fixed bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
     </div>
   );
 }
