@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 const skills = [
   "React",
@@ -53,6 +54,7 @@ export default function Home() {
 
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
+  const projectRef = useRef(null);
   const contactRef = useRef(null);
 
   const scrollToSection = (ref) => {
@@ -70,6 +72,8 @@ export default function Home() {
               setActiveSection("about");
             } else if (entry.target === experienceRef.current) {
               setActiveSection("experience");
+            } else if (entry.target === projectRef.current) {
+              setActiveSection("project");
             } else if (entry.target === contactRef.current) {
               setActiveSection("contact");
             }
@@ -84,6 +88,7 @@ export default function Home() {
 
     if (aboutRef.current) observer.observe(aboutRef.current);
     if (experienceRef.current) observer.observe(experienceRef.current);
+    if (projectRef.current) observer.observe(projectRef.current);
     if (contactRef.current) observer.observe(contactRef.current);
 
     return () => observer.disconnect();
@@ -107,6 +112,13 @@ export default function Home() {
             activeSection === "experience" ? "bg-primary" : "bg-secondary hover:opacity-80"
           }`}
           aria-label="Go to Experience section"
+        />
+        <button
+          onClick={() => scrollToSection(projectRef)}
+          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
+            activeSection === "project" ? "bg-primary" : "bg-secondary hover:opacity-80"
+          }`}
+          aria-label="Go to Projects section"
         />
         <button
           onClick={() => scrollToSection(contactRef)}
@@ -227,6 +239,61 @@ export default function Home() {
       </motion.section>
 
       <motion.section
+        ref={projectRef}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-[90%] md:w-[38%] h-screen mt-8 flex flex-col items-center md:justify-center"
+      >
+        <motion.div variants={itemVariants} className="w-full flex space-y-1 flex-col justify-between items-baseline">
+          <h2 className="text-primary text-3xl">{t("projects")}</h2>
+        </motion.div>
+
+        <motion.div
+          variants={itemVariants}
+          className="w-full flex flex-col gap-4 mt-12 border border-border rounded-xl p-4 hover:border-primary transition-all duration-300 cursor-pointer group"
+          onClick={() => window.open("https://web-mortydex.vercel.app/", "_blank")}
+        >
+          <div className="flex justify-between items-start">
+            <span className="text-secondary text-xs font-mono uppercase">2025</span>
+            <Image src="/mortydex.svg" alt="MortyDex Logo" width={40} height={40} className="flex-shrink-0" />
+          </div>
+          <h3 className="text-primary text-xl hover:text-secondary transition-all duration-300">MortyDex</h3>
+          <span className="text-secondary">{t("mortydexDescription")}</span>
+          <a
+            href="https://web-mortydex.vercel.app/"
+            className="cursor-pointer text-secondary group-hover:text-primary transition-all duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("projectView")}
+            <ArrowLongRightIcon className="h-4 w-4 inline-block ml-1 group-hover:translate-x-1 transition-all duration-300" />
+          </a>
+        </motion.div>
+        <motion.div
+          variants={itemVariants}
+          className="w-full flex flex-col gap-4 mt-12 border border-border rounded-xl p-4 hover:border-primary transition-all duration-300 cursor-pointer group"
+          onClick={() => window.open("https://ordinis.vercel.app/", "_blank")}
+        >
+          <div className="flex justify-between items-start">
+            <span className="text-secondary text-xs font-mono uppercase">2023</span>
+            <Image src="/ordinis.svg" alt="Ordinis Logo" width={40} height={40} className="flex-shrink-0" />
+          </div>
+          <h3 className="text-primary text-xl hover:text-secondary transition-all duration-300">Ordinis</h3>
+          <span className="text-secondary">{t("ordinisDescription")}</span>
+          <a
+            href="https://ordinis.vercel.app/"
+            className="cursor-pointer text-secondary group-hover:text-primary transition-all duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("projectView")}
+            <ArrowLongRightIcon className="h-4 w-4 inline-block ml-1 group-hover:translate-x-1 transition-all duration-300" />
+          </a>
+        </motion.div>
+      </motion.section>
+
+      <motion.section
         ref={contactRef}
         variants={containerVariants}
         initial="hidden"
@@ -235,10 +302,11 @@ export default function Home() {
       >
         <motion.div variants={itemVariants} className="w-full flex flex-col gap-4 justify-between items-baseline">
           <h2 className="text-primary text-3xl">{t("contact")}</h2>
-          <span className="text-secondary">
-            {t("contactDescription")}
-          </span>
-          <a href="mailto:lucasrcintra10@hotmail.com" className="hover:text-secondary transition-all duration-300 text-primary group">
+          <span className="text-secondary">{t("contactDescription")}</span>
+          <a
+            href="mailto:lucasrcintra10@hotmail.com"
+            className="hover:text-secondary transition-all duration-300 text-primary group"
+          >
             lucasrcintra10@hotmail.com
             <ArrowLongRightIcon className="h-6 w-6 inline-block ml-1 group-hover:translate-x-1 transition-all duration-300" />
           </a>

@@ -32,6 +32,12 @@ const translations = {
     technicalSupport: "Technical Support",
     systemMaintenance: "System Maintenance",
     contact: "Contact",
+    projects: "Projects",
+    mortydexDescription:
+      "A project to demonstrate the capabilities of consuming an Rest API and using Next.js to build a responsive and fast web application.",
+    ordinisDescription:
+      "A project developed using Next.js and Node.js to help a school manage their patrimony, allowing users to create, read, update, and delete items in the inventory.",
+    projectView: "View Project",
     contactDescription:
       "Always interested in new opportunities, collaborations, and conversations about technology and design. Feel free to reach out!",
     socials: "Socials",
@@ -66,6 +72,12 @@ const translations = {
       "Forneci suporte técnico e resolução de problemas para questões de hardware e software. Auxiliei na manutenção da infraestrutura de TI, incluindo gerenciamento de rede e atualizações de sistema.",
     technicalSupport: "Suporte Técnico",
     systemMaintenance: "Manutenção de Sistemas",
+    projects: "Projetos",
+    mortydexDescription:
+      "Um projeto para demonstrar as capacidades de consumir uma API Rest e usar Next.js para construir uma aplicação web responsiva e rápida.",
+    ordinisDescription:
+      "Um projeto desenvolvido usando Next.js e Node.js para ajudar uma escola a gerenciar seu patrimônio, permitindo que os usuários criem, leiam, atualizem e excluam itens no inventário.",
+    projectView: "Ver Projeto",
     contact: "Contato",
     contactDescription:
       "Sempre interessado em novas oportunidades, colaborações e conversas sobre tecnologia e design. Sinta-se à vontade para entrar em contato!",
