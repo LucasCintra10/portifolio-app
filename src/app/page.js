@@ -5,6 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import ButtonSection from "@/components/ButtonSection";
 
 const skills = [
   "React",
@@ -99,34 +100,10 @@ export default function Home() {
       <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none transition-colors duration-500"></div>
 
       <nav className="hidden md:fixed left-8 top-1/2 transform -translate-y-1/2 z-20 md:flex flex-col space-y-4">
-        <button
-          onClick={() => scrollToSection(aboutRef)}
-          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
-            activeSection === "about" ? "bg-primary" : "bg-secondary hover:opacity-80"
-          }`}
-          aria-label="Go to About section"
-        />
-        <button
-          onClick={() => scrollToSection(experienceRef)}
-          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
-            activeSection === "experience" ? "bg-primary" : "bg-secondary hover:opacity-80"
-          }`}
-          aria-label="Go to Experience section"
-        />
-        <button
-          onClick={() => scrollToSection(projectRef)}
-          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
-            activeSection === "project" ? "bg-primary" : "bg-secondary hover:opacity-80"
-          }`}
-          aria-label="Go to Projects section"
-        />
-        <button
-          onClick={() => scrollToSection(contactRef)}
-          className={`w-2 h-9 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer group ${
-            activeSection === "contact" ? "bg-primary" : "bg-secondary hover:opacity-80"
-          }`}
-          aria-label="Go to Contact section"
-        />
+        <ButtonSection onClick={() => scrollToSection(aboutRef)} activeSection={activeSection} />
+        <ButtonSection onClick={() => scrollToSection(experienceRef)} activeSection={activeSection} />
+        <ButtonSection onClick={() => scrollToSection(projectRef)} activeSection={activeSection} />
+        <ButtonSection onClick={() => scrollToSection(contactRef)} activeSection={activeSection} />
       </nav>
 
       <div className="absolute right-4 top-12 mb-4 flex space-x-4">
